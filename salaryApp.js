@@ -82,6 +82,7 @@ const initialCountListener = function () {
 function addRecordHandler() {
   const name = document.getElementById("name").value;
   const salary = document.getElementById("salary").value;
+  console.log(name, salary);
 
   if (!name || !salary) {
     showDataError(name, salary);
@@ -115,9 +116,9 @@ function secondHandler(e) {
 const showLastItem = function () {
   const items = salary_data;
   let lastKey;
-  for (const key in items){
+  for (const key in items) {
     lastKey = key;
-  };
+  }
   const lastItem = items[lastKey];
   const lastRecord = getRecord(lastItem.name, lastItem.salary);
   displayLastItemDialog(lastRecord);
@@ -146,11 +147,12 @@ const displayLastItemDialog = function (lastItem) {
 };
 
 var showDataError = function (name, salary) {
-  const dlg = document.getElementById("#dialog-error");
+  const dlg = document.getElementById("dialog-error");
+  console.log(dlg);
   dlg.classList.remove("hide");
 
-  toggleErrorMessage("#newName", name, "Who the hell you are talking about!");
-  toggleErrorMessage("#newSalary", salary, "How much that guy make!");
+  toggleErrorMessage("newName", name, "Who the hell you are talking about!");
+  toggleErrorMessage("newSalary", salary, "How much that guy make!");
 
   dlg.dialog({
     width: 600,
@@ -164,9 +166,9 @@ var showDataError = function (name, salary) {
 
 function toggleErrorMessage(selector, value, msg) {
   if (value) {
-    document.getElementById(selector + "line").style.display = "none";
+    document.getElementById(selector + "Line").style.display = "none";
   } else {
-    document.getElementById(selector + "line").style.display = "block";
+    document.getElementById(selector + "Line").style.display = "block";
     document.getElementById(selector).innerText = msg;
   }
 }

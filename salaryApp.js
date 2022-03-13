@@ -89,7 +89,7 @@ function addRecordHandler() {
     return;
   }
 
-  addRecord(name, !salary);
+  addRecord(name, salary);
 }
 
 function addRecord(name, salary) {
@@ -174,6 +174,7 @@ function toggleErrorMessage(selector, value, msg) {
 }
 
 const showRecordCount = function (data) {
+  console.log("showRecordCount: " + data);
   const dlg = document.getElementById("dialog-record-count");
 
   dlg.classList.remove("hide");
@@ -225,9 +226,10 @@ function longLineCode() {
 
 const uniquifyNames = function (items) {
   const uniqueNames = {};
+  console.log("kasdfkjh" , Object.keys(uniqueNames));
 
   return items.map(function (item) {
-    if (uniqueNames[item.name]) {
+    if (Object.keys(uniqueNames).includes(item.name)) {
       uniqueNames[item.name] += " ";
       item.name += uniqueNames[item.name];
     } else {
